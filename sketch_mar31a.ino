@@ -23,14 +23,17 @@ void loop()
   
   String input = serialRead();  
   
-  Serial.print("begin");
-  printName("Temperature");
+  Serial.print("sensorsbegin");
+  printName("Bedroom","Temperature");
   Serial.print(getTemperature(sensors),1);
-  printName("PIR");
+  printName("Kitchen","PIR");
   Serial.print(getBool(pirPin));
-  printName("LED");
+  Serial.println("sensorsend");
+  
+  Serial.print("switchersbegin");
+  printName("Bedroom","LED1");
   Serial.print(getBool(ledPin));
-  Serial.println("end");
+  Serial.println("switchersend");
   
   on(ledPin, input, "ledon");
   off(ledPin, input, "ledoff");
@@ -73,8 +76,11 @@ void off(int pin, String input, String string)
   }
 }
 
-void printName(String name)
+void printName(String room, String name)
 {
+  
+  Serial.print(" ");
+  Serial.print(room);
   Serial.print(" ");
   Serial.print(name);
   Serial.print(" ");
