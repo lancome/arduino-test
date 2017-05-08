@@ -28,12 +28,10 @@ void loop()
   Serial.print(getTemperature(sensors),1);
   printName("Kitchen","PIR");
   Serial.print(getBool(pirPin));
-  Serial.println("sensorsend");
-  
-  Serial.print("switchersbegin");
   printName("Bedroom","LED1");
   Serial.print(getBool(ledPin));
-  Serial.println("switchersend");
+  Serial.println("sensorsend");
+
   
   on(ledPin, input, "ledon");
   off(ledPin, input, "ledoff");
